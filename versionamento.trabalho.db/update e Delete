@@ -1,0 +1,42 @@
+------------------------
+--UPDATE
+------------------------
+UPDATE VOLUMES
+SET preco = 135.00 ----ALTEREI O VALOR PARA 125
+WHERE id_volume = 2;
+--------------------
+SELECT preco
+FROM VOLUMES
+where id_volume = 2;
+--------------------
+UPDATE volumes
+set  preco = 135.00
+where id_volume = 1;
+--------------------
+SELECT preco
+FROM VOLUMES
+where id_volume = 1;
+--------------------
+UPDATE manutencao
+set  valor = 90
+where id_manutencao = 1;
+--------------------
+SELECT*FROM manutencao;
+--------------------
+--FIM UPDATE
+--------------------
+-----DELETE--------------
+Delete from agendamento
+where id_agendamento = 6;
+-------------------------
+Delete from cliente
+where id_ cliente= 6;
+-------------------------
+Delete from cliente
+where id_cliente = 9;
+------------------------
+
+
+
+
+
