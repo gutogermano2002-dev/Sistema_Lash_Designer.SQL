@@ -1,0 +1,18 @@
+---------------------------
+--Select de cada tabela
+---------------------------
+SELECT*FROM cliente;
+---------------------------
+SELECT*FROM amnese;
+---------------------------
+SELECT*FROM volumes;
+---------------------------
+SELECT*FROM manutencao; 
+---------------------------
+SELECT*FROM agendamento;
+--------------------------
+SELECT*FROM pagamento;
+-----------------------
+--FIM
+----------------------    
+
