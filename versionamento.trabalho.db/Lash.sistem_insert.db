@@ -1,0 +1,39 @@
+-- Inserir clientes
+INSERT INTO cliente (nome, data_de_nascimento, assinatura_responsavel, contato, empregado, profissao_atual, instagram, assinou_amnese)
+VALUES ('Paola Cristine', '2001-01-22', 0, '11987654321', 1, 'feirante', '@cristine', 1);
+SELECT*FROM cliente;
+
+-- Inserir anamnese
+INSERT INTO amnese (id_cliente, conjuntivite, alergia_maquiagem, pele_sensivel, problemas_oculares, usa_lentes_contato, usa_rimel, blefarite, cirurgia_ocular, colirio_continuo, maquiagem_diaria, ambiente_de_trabalho, tecnica_preferida, curvatura, tamanho_fio, efeito_desejado, data_assinatura, observacoes)
+VALUES (1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 'Loja de Roupas', 'Volume Russo', 'C 8-15mm', '0.07mm', 'Natural', '2024-06-01', 'Nenhuma observação adicional.');
+SELECT*FROM amnese;
+
+-- Inserir volumes de serviços
+INSERT INTO Volumes (nome_servico, preco, descricao)
+VALUES 
+('Volume brasileiro', 130.00, 'Cílios modelo mais delicado e natural.'),
+('Volume safira', 130.00, 'Cílios modelo mais cheio e natural.'),
+('Volume efeito fox eyes', 140.00, 'Efeito raposa delineado, alonga o olhar.'),
+('Volume Mega-brasileiro', 150.00, 'Capping por cada fio natural da cliente.'),
+('Volume glamour', 130.00, 'Fios 6D causando preenchimento similar ao russo.'),
+('Volume Mega-glamour', 160.00, 'Capping por cada fio natural, porém maior volume.');
+SELECT*FROM volumes;
+
+-- Inserir manutenção
+INSERT INTO manutencao (id_cliente, id_volume, data_manutencao, tipo_manutencao, entre_15_dias, entre_20_dias, valor)
+VALUES (1, 2, '2024-06-15', 'Reparo', 1, 0, 80.00);
+SELECT*FROM manutencao;
+
+-- Inserir agendamento
+INSERT INTO agendamento (id_cliente, id_volume, data_agendamento, hora_agendamento, status_agendamento)
+VALUES (1, 2, '2024-06-10', '14:00', 'Confirmado');
+SELECT*FROM agendamento;
+
+-- Inserir pagamento
+INSERT INTO pagamento (id_cliente, id_agendamento_colocacao, id_manutencao, forma_de_pagamento, valor_pago, data_pagamento)
+VALUES (1, 1, 1, 'Cartão de Crédito', 210.00, '2024-06-10');
+SELECT*FROM pagamento
+
+-------------------------------------------------------------
+--UPDATE
+-------------------------------------------------------------
