@@ -1,0 +1,131 @@
+CREATE TABLE Cliente (
+    id_cliente             INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome                   TEXT    NOT NULL,
+    assinatura_responsavel INTEGER NOT NULL
+                                   DEFAULT 0,
+    data_de_nascimento     TEXT    NOT NULL,
+    contato                TEXT    NOT NULL,
+    empregado              INTEGER NOT NULL
+                                   DEFAULT 0,
+    profissao_atual        TEXT    NOT NULL,
+    instagram              TEXT,
+    assinou_amnese         INTEGER NOT NULL
+                                   DEFAULT 0
+);
+
+CREATE TABLE amnese (
+    id_amnese            INTEGER       PRIMARY KEY,
+    id_cliente           INTEGER       NOT NULL,
+    conjuntivite         BIT           NOT NULL,
+    alergia_maquiagem    BIT           NOT NULL,
+    pele_sensivel        BIT           NOT NULL,
+    problemas_oculares   BIT           NOT NULL,
+    usa_lentes_contato   BIT           NOT NULL,
+    usa_rimel            BIT           NOT NULL,
+    blefarite            BIT           NOT NULL,
+    cirurgia_ocular      BIT           NOT NULL,
+    colirio_continuo     BIT           NOT NULL,
+    maquiagem_diaria     BIT           NOT NULL,
+    ambiente_de_trabalho VARCHAR (100),
+    tecnica_preferida    VARCHAR (50)  NOT NULL,
+    curvatura            VARCHAR (10)  NOT NULL,
+    tamanho_fio          VARCHAR (10)  NOT NULL,
+    efeito_desejado      VARCHAR (50)  NOT NULL,
+    data_assinatura      DATE,
+    observacoes          TEXT,
+    FOREIGN KEY (
+        id_cliente
+    )
+    REFERENCES cliente (id_cliente) 
+);
+
+CREATE TABLE VOLUMES (
+    id_volume    INTEGER         PRIMARY KEY,
+    nome_servico VARCHAR (100)   NOT NULL,
+    preco        DECIMAL (10, 2) NOT NULL,
+    descricao    TEXT
+);
+
+CREATE TABLE manutencao (
+    id_manutencao   INTEGER         PRIMARY KEY,
+    id_cliente      INTEGER         NOT NULL,
+    id_volume       INTEGER         NOT NULL,
+    data_manutencao DATE            NOT NULL,
+    tipo_manutencao VARCHAR (50)    NOT NULL,
+    entre_15_dias   BIT             NOT NULL
+                                    DEFAULT 0,
+    entre_20_dias   BIT             NOT NULL
+                                    DEFAULT 0,
+    valor           DECIMAL (10, 2) NOT NULL,
+    FOREIGN KEY (
+        id_cliente
+    )
+    REFERENCES cliente (id_cliente),
+    FOREIGN KEY (
+        id_volume
+    )
+    REFERENCES Volumes (id_volume) 
+);
+
+
+CREATE TABLE agendamento (
+    id_agendamento_colocacao INTEGER      PRIMARY KEY,
+    id_cliente               INTEGER      NOT NULL,
+    id_volume                INTEGER      NOT NULL,
+    data_agendamento         DATE         NOT NULL,
+    hora_agendamento         TIME         NOT NULL,
+    status_agendamento       VARCHAR (20) NOT NULL,
+    FOREIGN KEY (
+        id_cliente
+    )
+    REFERENCES cliente (id_cliente),
+    FOREIGN KEY (
+        id_volume
+    )
+    REFERENCES Volumes (id_volume) 
+);
+
+CREATE TABLE pagamento (
+    id_pagamento             INTEGER         PRIMARY KEY,
+    id_cliente               INTEGER         NOT NULL,
+    id_agendamento_colocacao INTEGER         NOT NULL,
+    id_manutencao            INTEGER         NOT NULL,
+    forma_de_pagamento       VARCHAR (50)    NOT NULL,
+    valor_pago               DECIMAL (10, 2) NOT NULL,
+    data_pagamento           DATE            NOT NULL,
+    FOREIGN KEY (
+        id_cliente
+    )
+    REFERENCES cliente (id_cliente),
+    FOREIGN KEY (
+        id_agendamento_colocacao
+    )
+    REFERENCES agendamento (id_agendamento_colocacao),
+    FOREIGN KEY (
+        id_manutencao
+    )
+    REFERENCES manutencao (id_manutencao) 
+);
+q
+
+
+
+
+
+
+CREATE TABLE agendamento (
+    id_agendamento_colocacao INTEGER      PRIMARY KEY,
+    id_cliente               INTEGER      NOT NULL,
+    id_volume                INTEGER      NOT NULL,
+    data_agendamento         DATE         NOT NULL,
+    hora_agendamento         TIME         NOT NULL,
+    status_agendamento       VARCHAR (20) NOT NULL,
+    FOREIGN KEY (
+        id_cliente
+    )
+    REFERENCES cliente (id_cliente),
+    FOREIGN KEY (
+        id_volume
+    )
+    REFERENCES Volumes (id_volume) 
+);
